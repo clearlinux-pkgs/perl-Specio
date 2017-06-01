@@ -4,9 +4,9 @@
 #
 Name     : perl-Specio
 Version  : 0.36
-Release  : 2
-URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.36.tar.gz
-Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.36.tar.gz
+Release  : 3
+URL      : http://www.cpan.org/authors/id/D/DR/DROLSKY/Specio-0.36.tar.gz
+Source0  : http://www.cpan.org/authors/id/D/DR/DROLSKY/Specio-0.36.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
 Group    : Development/Tools
 License  : Artistic-2.0
@@ -40,6 +40,9 @@ doc components for the perl-Specio package.
 %setup -q -n Specio-0.36
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
@@ -53,7 +56,7 @@ fi
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make TEST_VERBOSE=1 test
 
 %install
