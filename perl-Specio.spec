@@ -4,13 +4,24 @@
 #
 Name     : perl-Specio
 Version  : 0.42
-Release  : 11
-URL      : https://www.cpan.org/authors/id/D/DR/DROLSKY/Specio-0.42.tar.gz
-Source0  : https://www.cpan.org/authors/id/D/DR/DROLSKY/Specio-0.42.tar.gz
+Release  : 12
+URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.42.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.42.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
 Group    : Development/Tools
 License  : Artistic-2.0
-Requires: perl-Specio-doc
+Requires: perl-Specio-license
+Requires: perl-Specio-man
+Requires: perl(Devel::StackTrace)
+Requires: perl(Eval::Closure)
+Requires: perl(MRO::Compat)
+Requires: perl(Module::Runtime)
+Requires: perl(Role::Tiny)
+Requires: perl(Role::Tiny::With)
+Requires: perl(Sub::Quote)
+Requires: perl(Test::Fatal)
+Requires: perl(Test::Needs)
+Requires: perl(Try::Tiny)
 BuildRequires : perl(Devel::StackTrace)
 BuildRequires : perl(Eval::Closure)
 BuildRequires : perl(MRO::Compat)
@@ -29,12 +40,20 @@ Specio - Type constraints and coercions for Perl
 version 0.42
 # SYNOPSIS
 
-%package doc
-Summary: doc components for the perl-Specio package.
-Group: Documentation
+%package license
+Summary: license components for the perl-Specio package.
+Group: Default
 
-%description doc
-doc components for the perl-Specio package.
+%description license
+license components for the perl-Specio package.
+
+
+%package man
+Summary: man components for the perl-Specio package.
+Group: Default
+
+%description man
+man components for the perl-Specio package.
 
 
 %prep
@@ -62,6 +81,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/perl-Specio
+cp LICENSE %{buildroot}/usr/share/doc/perl-Specio/LICENSE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot}
 else
@@ -115,6 +136,49 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/site_perl/5.26.1/Specio/TypeChecks.pm
 /usr/lib/perl5/site_perl/5.26.1/Test/Specio.pm
 
-%files doc
+%files license
 %defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
+/usr/share/doc/perl-Specio/LICENSE
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man3/Specio.3
+/usr/share/man/man3/Specio::Coercion.3
+/usr/share/man/man3/Specio::Constraint::AnyCan.3
+/usr/share/man/man3/Specio::Constraint::AnyDoes.3
+/usr/share/man/man3/Specio::Constraint::AnyIsa.3
+/usr/share/man/man3/Specio::Constraint::Enum.3
+/usr/share/man/man3/Specio::Constraint::Intersection.3
+/usr/share/man/man3/Specio::Constraint::ObjectCan.3
+/usr/share/man/man3/Specio::Constraint::ObjectDoes.3
+/usr/share/man/man3/Specio::Constraint::ObjectIsa.3
+/usr/share/man/man3/Specio::Constraint::Parameterizable.3
+/usr/share/man/man3/Specio::Constraint::Parameterized.3
+/usr/share/man/man3/Specio::Constraint::Role::CanType.3
+/usr/share/man/man3/Specio::Constraint::Role::DoesType.3
+/usr/share/man/man3/Specio::Constraint::Role::Interface.3
+/usr/share/man/man3/Specio::Constraint::Role::IsaType.3
+/usr/share/man/man3/Specio::Constraint::Simple.3
+/usr/share/man/man3/Specio::Constraint::Structurable.3
+/usr/share/man/man3/Specio::Constraint::Structured.3
+/usr/share/man/man3/Specio::Constraint::Union.3
+/usr/share/man/man3/Specio::Declare.3
+/usr/share/man/man3/Specio::DeclaredAt.3
+/usr/share/man/man3/Specio::Exception.3
+/usr/share/man/man3/Specio::Exporter.3
+/usr/share/man/man3/Specio::Helpers.3
+/usr/share/man/man3/Specio::Library::Builtins.3
+/usr/share/man/man3/Specio::Library::Numeric.3
+/usr/share/man/man3/Specio::Library::Perl.3
+/usr/share/man/man3/Specio::Library::String.3
+/usr/share/man/man3/Specio::Library::Structured.3
+/usr/share/man/man3/Specio::Library::Structured::Dict.3
+/usr/share/man/man3/Specio::Library::Structured::Map.3
+/usr/share/man/man3/Specio::Library::Structured::Tuple.3
+/usr/share/man/man3/Specio::OO.3
+/usr/share/man/man3/Specio::PartialDump.3
+/usr/share/man/man3/Specio::Registry.3
+/usr/share/man/man3/Specio::Role::Inlinable.3
+/usr/share/man/man3/Specio::Subs.3
+/usr/share/man/man3/Specio::TypeChecks.3
+/usr/share/man/man3/Test::Specio.3
