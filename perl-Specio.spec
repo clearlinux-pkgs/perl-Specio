@@ -4,24 +4,14 @@
 #
 Name     : perl-Specio
 Version  : 0.42
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.42.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.42.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
 Group    : Development/Tools
 License  : Artistic-2.0
-Requires: perl-Specio-license
-Requires: perl-Specio-man
-Requires: perl(Devel::StackTrace)
-Requires: perl(Eval::Closure)
-Requires: perl(MRO::Compat)
-Requires: perl(Module::Runtime)
-Requires: perl(Role::Tiny)
-Requires: perl(Role::Tiny::With)
-Requires: perl(Sub::Quote)
-Requires: perl(Test::Fatal)
-Requires: perl(Test::Needs)
-Requires: perl(Try::Tiny)
+Requires: perl-Specio-license = %{version}-%{release}
+BuildRequires : buildreq-cpan
 BuildRequires : perl(Devel::StackTrace)
 BuildRequires : perl(Eval::Closure)
 BuildRequires : perl(MRO::Compat)
@@ -40,20 +30,21 @@ Specio - Type constraints and coercions for Perl
 version 0.42
 # SYNOPSIS
 
+%package dev
+Summary: dev components for the perl-Specio package.
+Group: Development
+Provides: perl-Specio-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Specio package.
+
+
 %package license
 Summary: license components for the perl-Specio package.
 Group: Default
 
 %description license
 license components for the perl-Specio package.
-
-
-%package man
-Summary: man components for the perl-Specio package.
-Group: Default
-
-%description man
-man components for the perl-Specio package.
 
 
 %prep
@@ -81,12 +72,12 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/perl-Specio
-cp LICENSE %{buildroot}/usr/share/doc/perl-Specio/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Specio
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Specio/LICENSE
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -95,52 +86,48 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Specio.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Coercion.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/AnyCan.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/AnyDoes.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/AnyIsa.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Enum.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Intersection.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/ObjectCan.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/ObjectDoes.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/ObjectIsa.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Parameterizable.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Parameterized.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Role/CanType.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Role/DoesType.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Role/Interface.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Role/IsaType.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Simple.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Structurable.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Structured.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Constraint/Union.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Declare.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/DeclaredAt.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Exception.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Exporter.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Helpers.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Builtins.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Numeric.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Perl.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/String.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Structured.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Structured/Dict.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Structured/Map.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Library/Structured/Tuple.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/OO.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/PartialDump.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Registry.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Role/Inlinable.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/Subs.pm
-/usr/lib/perl5/site_perl/5.26.1/Specio/TypeChecks.pm
-/usr/lib/perl5/site_perl/5.26.1/Test/Specio.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Coercion.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/AnyCan.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/AnyDoes.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/AnyIsa.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Enum.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Intersection.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/ObjectCan.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/ObjectDoes.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/ObjectIsa.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Parameterizable.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Parameterized.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Role/CanType.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Role/DoesType.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Role/Interface.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Role/IsaType.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Simple.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Structurable.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Structured.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Constraint/Union.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Declare.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/DeclaredAt.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Exception.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Exporter.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Helpers.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Builtins.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Numeric.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Perl.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/String.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Structured.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Structured/Dict.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Structured/Map.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Library/Structured/Tuple.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/OO.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/PartialDump.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Registry.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Role/Inlinable.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/Subs.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Specio/TypeChecks.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Test/Specio.pm
 
-%files license
-%defattr(-,root,root,-)
-/usr/share/doc/perl-Specio/LICENSE
-
-%files man
+%files dev
 %defattr(-,root,root,-)
 /usr/share/man/man3/Specio.3
 /usr/share/man/man3/Specio::Coercion.3
@@ -182,3 +169,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/Specio::Subs.3
 /usr/share/man/man3/Specio::TypeChecks.3
 /usr/share/man/man3/Test::Specio.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Specio/LICENSE

@@ -1,0 +1,11 @@
+0.42
+perl(Devel::StackTrace)
+perl(Eval::Closure)
+perl(MRO::Compat)
+perl(Module::Runtime)
+perl(Role::Tiny)
+perl(Role::Tiny::With)
+perl(Sub::Quote)
+perl(Test::Fatal)
+perl(Test::Needs)
+perl(Try::Tiny)
