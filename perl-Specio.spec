@@ -4,7 +4,7 @@
 #
 Name     : perl-Specio
 Version  : 0.43
-Release  : 17
+Release  : 18
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.43.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.43.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
