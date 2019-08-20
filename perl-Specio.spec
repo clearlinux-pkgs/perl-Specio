@@ -4,12 +4,14 @@
 #
 Name     : perl-Specio
 Version  : 0.44
-Release  : 23
+Release  : 24
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.44.tar.gz
-Summary  : Type constraints and coercions for Perl
+Summary  : 'Type constraints and coercions for Perl'
 Group    : Development/Tools
 License  : Artistic-2.0
+Requires: perl-Specio-license = %{version}-%{release}
+Requires: perl(Sub::Quote)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Devel::StackTrace)
 BuildRequires : perl(Eval::Closure)
@@ -34,10 +36,17 @@ Summary: dev components for the perl-Specio package.
 Group: Development
 Provides: perl-Specio-devel = %{version}-%{release}
 Requires: perl-Specio = %{version}-%{release}
-Requires: perl-Specio = %{version}-%{release}
 
 %description dev
 dev components for the perl-Specio package.
+
+
+%package license
+Summary: license components for the perl-Specio package.
+Group: Default
+
+%description license
+license components for the perl-Specio package.
 
 
 %prep
@@ -65,6 +74,8 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/perl-Specio
+cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Specio/LICENSE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -160,3 +171,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/Specio::Subs.3
 /usr/share/man/man3/Specio::TypeChecks.3
 /usr/share/man/man3/Test::Specio.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Specio/LICENSE
