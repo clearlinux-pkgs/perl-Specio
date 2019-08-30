@@ -4,14 +4,21 @@
 #
 Name     : perl-Specio
 Version  : 0.44
-Release  : 24
+Release  : 25
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.44.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.44.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-Specio-license = %{version}-%{release}
+Requires: perl(Devel::StackTrace)
+Requires: perl(Eval::Closure)
+Requires: perl(MRO::Compat)
+Requires: perl(Module::Runtime)
+Requires: perl(Role::Tiny)
+Requires: perl(Role::Tiny::With)
 Requires: perl(Sub::Quote)
+Requires: perl(Try::Tiny)
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Devel::StackTrace)
 BuildRequires : perl(Eval::Closure)

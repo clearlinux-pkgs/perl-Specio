@@ -1,3 +1,10 @@
 # This file contains additional runtime requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+perl(Devel::StackTrace)
+perl(Eval::Closure)
+perl(MRO::Compat)
+perl(Module::Runtime)
+perl(Role::Tiny)
+perl(Role::Tiny::With)
 perl(Sub::Quote)
+perl(Try::Tiny)
