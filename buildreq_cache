@@ -1,4 +1,4 @@
-0.44
+0.45
 perl(Devel::StackTrace)
 perl(Eval::Closure)
 perl(MRO::Compat)
@@ -9,3 +9,4 @@ perl(Sub::Quote)
 perl(Test::Fatal)
 perl(Test::Needs)
 perl(Try::Tiny)
+perl(XString)
