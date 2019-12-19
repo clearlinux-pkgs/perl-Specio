@@ -4,13 +4,12 @@
 #
 Name     : perl-Specio
 Version  : 0.45
-Release  : 26
+Release  : 27
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.45.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.45.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
 Group    : Development/Tools
 License  : Artistic-2.0
-Requires: perl-Specio-license = %{version}-%{release}
 Requires: perl-Specio-perl = %{version}-%{release}
 Requires: perl(Devel::StackTrace)
 Requires: perl(Eval::Closure)
@@ -19,6 +18,7 @@ Requires: perl(Module::Runtime)
 Requires: perl(Role::Tiny)
 Requires: perl(Role::Tiny::With)
 Requires: perl(Sub::Quote)
+Requires: perl(Test::Fatal)
 Requires: perl(Try::Tiny)
 Requires: perl(XString)
 BuildRequires : buildreq-cpan
@@ -49,14 +49,6 @@ Requires: perl-Specio = %{version}-%{release}
 
 %description dev
 dev components for the perl-Specio package.
-
-
-%package license
-Summary: license components for the perl-Specio package.
-Group: Default
-
-%description license
-license components for the perl-Specio package.
 
 
 %package perl
@@ -94,8 +86,6 @@ make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/perl-Specio
-cp %{_builddir}/Specio-0.45/LICENSE %{buildroot}/usr/share/package-licenses/perl-Specio/6b93bf1e533dec284ed3e0827aa113905883006f
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -151,10 +141,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/Specio::Subs.3
 /usr/share/man/man3/Specio::TypeChecks.3
 /usr/share/man/man3/Test::Specio.3
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Specio/6b93bf1e533dec284ed3e0827aa113905883006f
 
 %files perl
 %defattr(-,root,root,-)
