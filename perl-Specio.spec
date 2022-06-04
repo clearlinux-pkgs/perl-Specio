@@ -4,7 +4,7 @@
 #
 Name     : perl-Specio
 Version  : 0.47
-Release  : 39
+Release  : 40
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.47.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.47.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
@@ -159,43 +159,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Specio.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Coercion.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/AnyCan.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/AnyDoes.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/AnyIsa.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Enum.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Intersection.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/ObjectCan.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/ObjectDoes.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/ObjectIsa.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Parameterizable.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Parameterized.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Role/CanType.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Role/DoesType.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Role/Interface.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Role/IsaType.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Simple.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Structurable.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Structured.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Constraint/Union.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Declare.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/DeclaredAt.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Exception.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Exporter.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Helpers.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Builtins.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Numeric.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Perl.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/String.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Structured.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Structured/Dict.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Structured/Map.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Library/Structured/Tuple.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/OO.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/PartialDump.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Registry.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Role/Inlinable.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/Subs.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Specio/TypeChecks.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Test/Specio.pm
+/usr/lib/perl5/*
