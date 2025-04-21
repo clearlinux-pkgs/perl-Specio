@@ -7,7 +7,7 @@
 #
 Name     : perl-Specio
 Version  : 0.50
-Release  : 50
+Release  : 51
 URL      : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.50.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/Specio-0.50.tar.gz
 Summary  : 'Type constraints and coercions for Perl'
